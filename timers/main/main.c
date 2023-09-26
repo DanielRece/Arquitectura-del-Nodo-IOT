@@ -10,27 +10,47 @@
 #include "esp_log.h"
 #include "si7021.h"
 
-static const char *TAG = "main";
+#include "esp_timer.h"
+
+//static const char *TAG = "main";
+
+static float temperature;
+
+static void read_temperature_timer_callback(void* arg){
+	//ESP_LOGI("READ_TIMER","Reading...");
+	readTemperature(0, &temperature);
+
+
+}
+static void print_temperature_timer_callback(void* arg){
+	ESP_LOGI("PRINT_TIMER","Temperature: %f", temperature);
+}
 
 void app_main(void)
 {
-	struct si7021_reading si_data;
-	i2c_port_t i2c_num;
+	esp_timer_handle_t read_timer, print_timer;
+
+    const esp_timer_create_args_t read_timer_args = {
+            .callback = &read_temperature_timer_callback,
+            .name = "read_temperature"
+    };
+
+    const esp_timer_create_args_t print_timer_args = {
+            .callback = &print_temperature_timer_callback,
+            .name = "print_temperature"
+    };
 
     nvs_flash_init();
 
+    esp_timer_init();
+
     i2c_master_init();
 
-    i2c_num = 0;
 
-     while (1) {
-    	 readSensors(i2c_num, &si_data);
+    ESP_ERROR_CHECK(esp_timer_create(&read_timer_args, &read_timer));
+    ESP_ERROR_CHECK(esp_timer_create(&print_timer_args, &print_timer));
 
-    	 ESP_LOGI(TAG, "-----------------------------");
-         ESP_LOGI(TAG, "Reading SI7021:");
-         ESP_LOGI(TAG,  "	Temperature: %f ", si_data.temperature);
-         ESP_LOGI(TAG,  "	Humidity: %f ", si_data.humidity);
-         vTaskDelay(2000 / portTICK_PERIOD_MS);
-     }
+    ESP_ERROR_CHECK(esp_timer_start_periodic(read_timer, 1000000));
+    ESP_ERROR_CHECK(esp_timer_start_periodic(print_timer, 10000000));
 }
 
