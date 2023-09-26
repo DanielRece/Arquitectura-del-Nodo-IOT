@@ -19,7 +19,24 @@ static float temperature;
 static void read_temperature_timer_callback(void* arg){
 	//ESP_LOGI("READ_TIMER","Reading...");
 	readTemperature(0, &temperature);
+	// TODO: Encender/apagar LEDs en función de la temperatura
+	/*
+		EJEMPLO DE PSEUDOCODIGO DE CÓMO HACER LA LÓGICA
+  (HABRÍA QUE INICIALIZAR LOS GPIOS EN EL MAIN)
+  temp -= 20;
+i = 0;
+while (temp > 0 && i < 4){
+ encender_led(gpio[i]);
+ temp -= 2;
+ i++;
+}
+// APAGAR LOS LEDS RESTANTES
+while(i < 4){
+apagar_led(gpio[i]);
+i++;
+}
 
+	*/
 
 }
 static void print_temperature_timer_callback(void* arg){
