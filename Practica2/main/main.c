@@ -48,7 +48,7 @@ static void read_temperature_timer_callback(void* arg){
 		gpio_set_level(led_gpio[i], 0);
 	}
 
-
+z
 }
 static void print_temperature_timer_callback(void* arg){
 	ESP_LOGI("PRINT_TIMER","Temperature: %f", temperature);

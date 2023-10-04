@@ -1,7 +1,7 @@
 {
     "version":            "1",
     "project_name":       "hello_world",
-    "project_version":    "9ebf6b9",
+    "project_version":    "a9035a7-dirty",
     "project_path":       "/home/danrec/git/Arquitectura-del-Nodo-IOT/ANIOTP3/hello_world",
     "idf_path":           "/home/danrec/esp/esp-idf",
     "build_dir":          "/home/danrec/git/Arquitectura-del-Nodo-IOT/ANIOTP3/hello_world/build",
