@@ -1,7 +1,8 @@
 {
   "C_Cpp.intelliSenseEngine": "default",
   "files.associations": {
-    "freertos.h": "c"
+    "freertos.h": "c",
+    "stddef.h": "c"
   },
   "idf.flashType": "UART",
   "idf.port": "/dev/ttyUSB0",

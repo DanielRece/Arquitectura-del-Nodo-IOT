@@ -62,3 +62,4 @@
 /home/danrec/git/Arquitectura-del-Nodo-IOT/ANIOTP3/hello_world/build/esp-idf/spiffs/libspiffs.a
 /home/danrec/git/Arquitectura-del-Nodo-IOT/ANIOTP3/hello_world/build/esp-idf/wifi_provisioning/libwifi_provisioning.a
 /home/danrec/git/Arquitectura-del-Nodo-IOT/ANIOTP3/hello_world/build/esp-idf/main/libmain.a
+/home/danrec/git/Arquitectura-del-Nodo-IOT/ANIOTP3/hello_world/build/esp-idf/mock-flash/libmock-flash.a

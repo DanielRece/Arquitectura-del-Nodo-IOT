@@ -417,3 +417,8 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/home/danrec/git/Arquitectura-del-Nodo-IOT/ANIOTP3/hello_world/build/esp-idf/main/cmake_install.cmake")
 endif()
 
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("/home/danrec/git/Arquitectura-del-Nodo-IOT/ANIOTP3/hello_world/build/esp-idf/mock-flash/cmake_install.cmake")
+endif()
+

@@ -1,1 +1,0 @@
-idf_component_register(SRCS "mock-flash.c" INCLUDE_DIRS ".")
