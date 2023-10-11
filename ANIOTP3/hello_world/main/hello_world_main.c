@@ -14,24 +14,31 @@
 #include <driver/adc.h>
 #include "esp_log.h"
 #include "time.h"
+#include "../components/mock-flash/mock-flash.h"
 
-static float temp;
+static CircularBuffer buffer;
 
-static void temp_task_function(void *arg)
-{
-    TickType_t period = (TickType_t) arg;
-    while(1){
-        temp = rand() + rand()/RAND_MAX;
-        ESP_LOGI("Muestra", "Value:%f",temp);
-        vTaskDelay(period);
-    }    
+void lee_estados(){
+    switch (DATOS_SENSOR_OBTENIDOS){
+        datos_sensor = obtener_sensor();
+        case (WIFI_CONECTADO):
+            while(getDataLeft(&buffer)>0){
+                float dato_a_enviar = (*float)*readFromFlash(&buffer, sizeof(float));
+                enviar_por_wifi(dato_a_enviar);
+            }
+            enviar_por_wifi(datos_sensor)
+        case (WIFI_NO CONECTADO):
+            writeToFlash($buffer, datos_sensor, sizeof(datos_sensor));
+    }
 }
 
-void app_main(void)
-{
-    srand(time(NULL));
-    ESP_LOGI("INFO", "Hello world<!\n");
-    TickType_t period = 1000/portTICK_PERIOD_MS;
-    xTaskCreatePinnedToCore(&temp_task_function, "Muestreadora", 2048, (void*) period, 2, NULL, 0);
-    ESP_LOGI("INFO", "Bye world");
+
+
+
+
+void app_main() {
+
+
+
+
 }

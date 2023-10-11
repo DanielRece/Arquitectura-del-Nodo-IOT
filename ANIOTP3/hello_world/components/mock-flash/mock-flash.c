@@ -16,7 +16,6 @@ esp_err_t circularBuffer_init(CircularBuffer* buffer, size_t capacity) {
     if (!buffer->buffer) {
         return ESP_ERR_NO_MEM;
     }
-
     buffer->capacity = capacity;
     buffer->head = 0;
     buffer->tail = 0;
