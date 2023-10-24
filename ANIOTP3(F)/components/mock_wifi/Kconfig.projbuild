@@ -1,0 +1,34 @@
+menu "Mock WiFi configuration"
+
+    config ESP_WIFI_LATENCY
+        int "Waiting time to simulate starting WiFi"
+        range 0 20
+        default 3
+        help
+            Define the delay to pretend to start WiFi in seconds, between 0 and 20 (default: 3).
+
+    config ESP_GOTIP_LATENCY
+        int "Waiting time to simulate getting an IP address"
+        range 0 20
+        default 1
+        help
+            Define the delay to pretend to get an IP address in seconds, between 0 and 20 (default: 1).
+        
+    config ESP_NETWORKDOWN_DELAY
+        int "Time after which the mock network is simulated to fall down"
+        range 0 60
+        default 20
+        help
+            Define the period after which the network is simulatedly falling down,
+            between 0 and 60 (default: 20).
+                
+    config ESP_GOTWIFI_RATE
+        int "Percentage of times a wifi_connect call returns success"
+        range 0 100
+        default 95
+        help
+            Define the percentage of times that an invocation should return a succesful
+            connection, between 0 and 100 (default: 95). Warning: this uses random values,
+            so it is not guaranteed that 100 calls returns exactly 95 success and 5 fails.
+        
+endmenu
