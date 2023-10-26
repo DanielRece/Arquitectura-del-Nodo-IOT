@@ -1,0 +1,22 @@
+Grupo 7: Fabrizio Alcaraz y Daniel Rece
+1- La dirección del sensor es 1000000(es decir, 0x40 expresado en hexadecimal). 
+Si queremos hacer una operación de lectura (bit R/W a 1), 
+¿cómo construiremos el segundo argumento de la llamada a i2c_master_write_byte() que haremos tras i2c_master_start()?
+
+R- Para construir el segundo argumento de la llamada a i2c_master_write_byte(), habría que desplazar 1 bit a la izquierda
+la dirección del sensor (0x40 << 1) y hacer un OR con el bit R/W: (0x40 << 1) | 1
+
+
+2- ¿Cuál es la diferencia entre 0xE3 y 0xF3? ¿Qué es clock stretching?
+
+R- La diferencia entre esos códigos de comando es que el 0xE3 utiliza clock stretching, el cual es una técnica del dispositivo
+esclavo para retrasar el reloj en caso de que necesite más tiempo para dar una respuesta al maestro.
+
+
+3- Dichos comandos devuelven 2 bytes, que leeremos en dos variables diferentes.
+¿Cómo obtenemos posteriormente nuestro número de 16 bits para calcular la temperatura?
+
+R- Para obtener el número que utilizaremos para calcular posteriormente la temperatura habría que utilizar una 
+variable de 16 bits, el cuál estaría conformado por el primer byte recibido desplazado 8 posiciones y un OR 
+con el segundo byte recibido sin desplazar:
+Var = (Byte0 << 8) | Byte1
