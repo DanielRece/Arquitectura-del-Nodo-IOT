@@ -1,0 +1,9 @@
+{
+  "C_Cpp.intelliSenseEngine": "default",
+  "idf.adapterTargetName": "esp32",
+  "files.associations": {
+    "consola.h": "c"
+  },
+  "idf.flashType": "UART",
+  "idf.port": "/dev/ttyUSB0"
+}
