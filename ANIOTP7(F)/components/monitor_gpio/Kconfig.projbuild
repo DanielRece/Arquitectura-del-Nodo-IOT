@@ -1,0 +1,22 @@
+menu "Configuración Monitor-GPIO"
+
+config DETECCION
+    int "Detección (s)"
+    range 1 3600
+    default 2
+    help
+        Indica el intervalo de detección del botón en segundos.
+        
+config GPIO_BOTON
+    int "GPIO Botón"
+    default 34
+    help
+        Indica GPIO que se utilizará como botón.
+
+config OTA_BOTON
+    int "OTA Botón"
+    default 32
+    help
+        Indica el GPIO que se utilizará como botón para OTA.
+
+endmenu
